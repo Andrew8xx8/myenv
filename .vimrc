@@ -1,5 +1,8 @@
  set nowrap
 
+ " 256 цветов в vim by http://vim.wikia.com/wiki/256_colors_in_vim
+ set t_Co=256
+
  " Поиск будет учитывать регистр только если в строке поиска присутствую
  " заглавные буквы
  set ignorecase
