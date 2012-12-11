@@ -1,0 +1,4 @@
+my_lang="en_US.UTF-8"
+
+export LANG="$my_lang"
+export LC_ALL="$my_lang"

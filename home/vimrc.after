@@ -1,0 +1,24 @@
+set encoding=utf8
+set fileencoding=utf8
+set termencoding=utf8
+
+set statusline=%<%f%h%m%r\ %b\ %{&encoding}\ 0x\ \ %l,%c%V\ %P
+set laststatus=2
+
+colorscheme zenburn
+set t_Co=256
+
+" Правильный мапинг кирилицы через imap.
+" Переключиться на Русский можно только в режиме вставки
+" Ctrl + ^
+set keymap=russian-jcukenwin
+set iminsert=0
+set imsearch=0
+highlight lCursor guifg=NONE guibg=Cyan
+
+nmap <F5> <Esc>:BuffergatorOpen<cr>
+vmap <F5> <esc>:BuffergatorOpen<cr>
+imap <F5> <esc><esc>:BuffergatorOpen<cr>
+
+let g:buffergator_viewport_split_policy = "T"
+

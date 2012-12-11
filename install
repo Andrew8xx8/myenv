@@ -1,0 +1,59 @@
+#!/bin/sh
+
+CUR=`pwd`
+
+echo "~/.tools"
+cp -Rf home/tools ~/.tools
+ls -al ~/.tools
+
+echo "~/.screenrc"
+cp -f home/screenrc ~/.screenrc
+
+if [ ! -e ~/.gitconfig.backup ]; then
+  echo "backup .gitconfig .."
+  mv -f ~/.gitconfig ~/.gitconfig.backup
+fi
+
+echo "~/.gitconfig"
+cp -f home/gitconfig ~/.gitconfig
+
+echo "~/.gitignore"
+cp -f home/gitignore ~/.gitignore
+
+echo "Installing zshkit"
+
+rm -Rf ~/.zshkit
+cp -Rf home/zshkit ~/.zshkit
+~/.zshkit/install
+
+echo "Adding homedir extra lines to ~/.zshrc"
+cat zshrc_addons >> ~/.zshrc
+
+echo "Done"
+
+echo "Removing existing vim dotfiles"
+
+if [ ! -e ~/.vim.backup ]; then
+  echo "backup .vim .."
+  mv -f ~/.vim ~/.vim.backup
+fi
+if [ ! -e ~/.vimrc.backup ]; then
+  echo "backup .vimrc .."
+  mv -f ~/.vimrc ~/.vimrc.backup
+fi
+
+rm -Rf ~/.vim
+rm -f ~/.vimrc
+
+echo "Install Janus"
+
+curl -Lo- https://bit.ly/janus-bootstrap | bash
+
+cd $CUR
+
+echo "Patching vimfiles/vimrc"
+
+cp -f home/vimrc.before ~/.vimrc.before
+cp -f home/vimrc.after ~/.vimrc.after
+
+echo "\nDone"
