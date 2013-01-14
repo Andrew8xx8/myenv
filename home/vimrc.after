@@ -22,3 +22,5 @@ imap <F5> <esc><esc>:BuffergatorOpen<cr>
 
 let g:buffergator_viewport_split_policy = "T"
 
+vmap <c-c> y:call system("xclip -i -selection clipboard", getreg("\""))<cr>:call system("xclip -i", getreg("\""))<cr>
+nmap <c-v> :call setreg("\"",system("xclip -o -selection clipboard"))<cr>p")")")"))
