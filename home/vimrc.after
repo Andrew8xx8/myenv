@@ -5,22 +5,19 @@ set termencoding=utf8
 set statusline=%<%f%h%m%r\ %b\ %{&encoding}\ 0x\ \ %l,%c%V\ %P
 set laststatus=2
 
-colorscheme zenburn
+colorscheme solarized
 set t_Co=256
-
-" Правильный мапинг кирилицы через imap.
-" Переключиться на Русский можно только в режиме вставки
-" Ctrl + ^
-set keymap=russian-jcukenwin
-set iminsert=0
-set imsearch=0
-highlight lCursor guifg=NONE guibg=Cyan
 
 nmap <F5> <Esc>:BuffergatorOpen<cr>
 vmap <F5> <esc>:BuffergatorOpen<cr>
 imap <F5> <esc><esc>:BuffergatorOpen<cr>
 
-let g:buffergator_viewport_split_policy = "T"
+" Выключаем надоедливый "звонок"
+set novisualbell
+set t_vb=
 
-vmap <c-c> y:call system("xclip -i -selection clipboard", getreg("\""))<cr>:call system("xclip -i", getreg("\""))<cr>
-nmap <c-v> :call setreg("\"",system("xclip -o -selection clipboard"))<cr>p")")")"))
+" Не выгружать буфер, когда переключаемся на другой
+" Это позволяет редактировать несколько файлов в один и тот же момент без
+" необходимости сохранения каждый раз
+" когда переключаешься между ними
+set hidden
